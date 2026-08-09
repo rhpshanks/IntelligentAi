@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self'; form-action 'self'; upgrade-insecure-requests">
+
+<title>About | Intelligentside</title>
+<meta name="description" content="Intelligentside builds scheduling systems. What state of the art and future proof mean in practice, and what this site deliberately does not claim.">
+<link rel="canonical" href="https://intelligentside.com/about/">
+
+<meta name="theme-color" content="#05070D" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F5F8FC" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Intelligentside">
+<meta property="og:title" content="About | Intelligentside">
+<meta property="og:description" content="What state of the art and future proof mean in practice, and what this site deliberately does not claim.">
+<meta property="og:url" content="https://intelligentside.com/about/">
+<meta property="og:image" content="https://intelligentside.com/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Intelligentside: scheduling systems that hold up.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="../assets/img/favicon.ico" sizes="32x32">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+
+<link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/theme.js"></script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to main copy</a>
+
+<div class="mesh" aria-hidden="true"></div>
+<div class="field" aria-hidden="true"><canvas id="field"></canvas></div>
+
+<header class="site-header">
+  <div class="wrap masthead">
+    <a class="brand" href="../" aria-label="Intelligentside home">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <circle class="ring" cx="16" cy="16" r="12.2" fill="none" stroke-width="1.5" stroke-opacity=".55"/>
+        <rect class="beam" x="8.4" y="10.6" width="10.6" height="2.9" rx="1.45"/>
+        <rect class="beam" x="12.2" y="14.6" width="11.4" height="2.9" rx="1.45" fill-opacity=".76"/>
+        <rect class="beam" x="8.4" y="18.6" width="7.6" height="2.9" rx="1.45" fill-opacity=".52"/>
+      </svg>
+      <span class="brand-name"><b>Intelligent</b><span>side</span></span>
+    </a>
+
+    <nav id="primary-nav" class="nav" aria-label="Primary">
+      <a href="../scheduling-systems/">Scheduling systems</a>
+      <a href="../who-we-serve/">Who it serves</a>
+      <a href="./" aria-current="page">About</a>
+      <a href="../contact/">Contact</a>
+    </nav>
+
+    <div class="header-tools">
+      <a class="btn btn--primary btn--sm header-call" href="tel:+447848174335">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        <span class="label">+44 7848 174335</span>
+      </a>
+
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch theme">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="../">Home</a><span>/</span>About</p>
+      <p class="eyebrow">About</p>
+      <h1>One job, done properly.</h1>
+      <p class="lede">
+        Intelligentside builds scheduling systems. Not project tooling with a calendar
+        bolted on, and not a general software shop that will take a scheduling brief.
+        Scheduling is the whole of the work.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--edge">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">State of the art, defined</p>
+        <h2>A claim that has to mean something.</h2>
+      </div>
+
+      <div class="prose mt-m" data-reveal>
+        <p>
+          State of the art gets used as decoration. Here it carries a plain meaning:
+          the scheduling methods published and proven in the field get applied properly,
+          rather than a rota tool dressed up in new language.
+        </p>
+        <p>In practice that means:</p>
+        <ul>
+          <li>Constraint based models, so a rule stated once holds everywhere it applies</li>
+          <li>Solvers that rebuild a plan in milliseconds, which is what makes live replanning realistic</li>
+          <li>Every model measured against the plan the business already makes, on weeks already worked</li>
+          <li>A stated objective, so the system optimises the thing the business actually cares about</li>
+          <li>Method choices written down and open to challenge, never hidden behind the word intelligent</li>
+        </ul>
+        <p>
+          If a simpler tool solves the problem, that gets said. A scheduling system is a
+          real commitment and it should only be taken on when the work justifies it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--edge">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Future proof, defined</p>
+        <h2>Built so leaving stays possible.</h2>
+        <p class="lede">
+          A system is only future proof if walking away from it is cheap. Everything below
+          is a standing commitment, written here so it can be held to.
+        </p>
+      </div>
+
+      <ul class="tick-list mt-m measure" data-reveal>
+        <li>Data stays in open formats and exports in full, at any time, with no charge for leaving</li>
+        <li>Scheduling rules live in readable configuration, not buried inside compiled code</li>
+        <li>Interfaces follow published standards, so a new tool connects without a rewrite</li>
+        <li>No lock-in clause. The logic and the data belong to the business that paid for them</li>
+        <li>Written handover, so a change of supplier costs weeks and not years</li>
+        <li>Method and model choices documented, so the next engineer can read the reasoning</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--edge">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Straight dealing</p>
+        <h2>What this site does not claim.</h2>
+        <p class="lede">
+          Plenty of sites lead with numbers nobody can check. This one holds a rule:
+          nothing gets published here until evidence for it sits on file.
+        </p>
+      </div>
+
+      <div class="grid grid--2 mt-l">
+        <article class="card" data-reveal>
+          <h3>No borrowed credibility</h3>
+          <p>
+            No client logos, no testimonials and no case studies appear anywhere on this
+            site. When a customer agrees in writing to be named, that changes, and the
+            work gets described accurately.
+          </p>
+        </article>
+        <article class="card" data-reveal>
+          <h3>No decorative statistics</h3>
+          <p>
+            No uptime percentage, no efficiency gain, no hours saved. The only figures
+            published are the ones the model on this site computes while you watch it.
+          </p>
+        </article>
+        <article class="card" data-reveal>
+          <h3>No invented history</h3>
+          <p>
+            No years in business, no headcount, no awards or accreditations. Intelligentside
+            is early, and pretending otherwise would be a poor start to a working relationship.
+          </p>
+        </article>
+        <article class="card" data-reveal>
+          <h3>No hidden pricing games</h3>
+          <p>
+            Scope, cost and the support window get written down before work starts. The
+            business owns what it pays for, including the right to take it elsewhere.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="band" data-reveal>
+        <div>
+          <h2>Ask the awkward questions.</h2>
+          <p>Method, cost, what happens if it does not work, and what leaving looks like. All of it answerable on a first call.</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="tel:+447848174335">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            +44 7848 174335
+          </a>
+          <a class="btn btn--ghost" href="../contact/">Send a message</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="../" aria-label="Intelligentside home">
+          <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+            <circle class="ring" cx="16" cy="16" r="12.2" fill="none" stroke-width="1.5" stroke-opacity=".55"/>
+            <rect class="beam" x="8.4" y="10.6" width="10.6" height="2.9" rx="1.45"/>
+            <rect class="beam" x="12.2" y="14.6" width="11.4" height="2.9" rx="1.45" fill-opacity=".76"/>
+            <rect class="beam" x="8.4" y="18.6" width="7.6" height="2.9" rx="1.45" fill-opacity=".52"/>
+          </svg>
+          <span class="brand-name"><b>Intelligent</b><span>side</span></span>
+        </a>
+        <p class="footer-blurb">
+          Scheduling systems designed to hold up in the real week, and to stay useful as
+          the work changes.
+        </p>
+      </div>
+
+      <nav aria-labelledby="foot-site">
+        <h2 id="foot-site">Site</h2>
+        <div class="footer-links">
+          <a href="../scheduling-systems/">Scheduling systems</a>
+          <a href="../who-we-serve/">Who it serves</a>
+          <a href="./">About</a>
+          <a href="../contact/">Contact</a>
+        </div>
+      </nav>
+
+      <nav aria-labelledby="foot-legal">
+        <h2 id="foot-legal">Legal</h2>
+        <div class="footer-links">
+          <a href="../privacy/">Privacy policy</a>
+          <a href="../terms/">Terms of use</a>
+          <a href="../cookies/">Cookie notice</a>
+        </div>
+      </nav>
+
+      <div>
+        <h2>Contact</h2>
+        <div class="footer-links">
+          <a href="tel:+447848174335">+44 7848 174335</a>
+          <a href="mailto:me@hashaamshahid.com">me@hashaamshahid.com</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="colophon">
+      <span>&copy; <span data-year>2026</span> Intelligentside. All rights reserved.</span>
+      <span><a href="../privacy/">Privacy</a> &middot; <a href="../terms/">Terms</a> &middot; <a href="../cookies/">Cookies</a></span>
+    </p>
+  </div>
+</footer>
+
+<div class="consent" data-consent hidden>
+  <p>This site would like to measure page visits. Nothing loads until you choose.</p>
+  <div class="btn-row">
+    <button class="btn btn--ghost btn--sm" type="button" data-consent-no>Decline</button>
+    <button class="btn btn--primary btn--sm" type="button" data-consent-yes>Allow</button>
+  </div>
+</div>
+
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/site.js" defer></script>
+<script src="../assets/js/field.js" defer></script>
+</body>
+</html>

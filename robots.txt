@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Legal pages carry unresolved placeholders and are marked noindex in the page
+# head as well. Remove those meta tags once the bracketed details get filled in.
+
+Sitemap: https://intelligentside.com/sitemap.xml

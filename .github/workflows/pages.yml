@@ -1,0 +1,56 @@
+name: Check and publish
+
+# Runs the pre-release checks from SOP-WEB-001 section 9.1, then publishes to
+# GitHub Pages only when they pass. Set Settings > Pages > Source to
+# "GitHub Actions" to use this. Deploying straight from a branch works too,
+# in which case this workflow still guards every push.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  check:
+    name: Site checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Links, metadata, accessibility and CSP checks
+        run: python tools/check-site.py
+
+  publish:
+    name: Publish to Pages
+    needs: check
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - id: deploy
+        uses: actions/deploy-pages@v4

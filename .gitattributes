@@ -1,0 +1,6 @@
+# Keep line endings deterministic so a checkout on Windows and one on Linux
+# produce byte-identical files, and diffs stay clean.
+* text=auto eol=lf
+
+*.png  binary
+*.ico  binary

@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self'; form-action 'self'; upgrade-insecure-requests">
+
+<title>Who it serves | Intelligentside</title>
+<meta name="description" content="Four shapes of scheduling problem Intelligentside systems address: field service, appointments, shift rotas, and fixed bay capacity.">
+<link rel="canonical" href="https://intelligentside.com/who-we-serve/">
+
+<meta name="theme-color" content="#05070D" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F5F8FC" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Intelligentside">
+<meta property="og:title" content="Who it serves | Intelligentside">
+<meta property="og:description" content="Four shapes of scheduling problem: field service, appointments, shift rotas, and fixed bay capacity.">
+<meta property="og:url" content="https://intelligentside.com/who-we-serve/">
+<meta property="og:image" content="https://intelligentside.com/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Intelligentside: scheduling systems that hold up.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="../assets/img/favicon.ico" sizes="32x32">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+
+<link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/theme.js"></script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to main copy</a>
+
+<div class="mesh" aria-hidden="true"></div>
+<div class="field" aria-hidden="true"><canvas id="field"></canvas></div>
+
+<header class="site-header">
+  <div class="wrap masthead">
+    <a class="brand" href="../" aria-label="Intelligentside home">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <circle class="ring" cx="16" cy="16" r="12.2" fill="none" stroke-width="1.5" stroke-opacity=".55"/>
+        <rect class="beam" x="8.4" y="10.6" width="10.6" height="2.9" rx="1.45"/>
+        <rect class="beam" x="12.2" y="14.6" width="11.4" height="2.9" rx="1.45" fill-opacity=".76"/>
+        <rect class="beam" x="8.4" y="18.6" width="7.6" height="2.9" rx="1.45" fill-opacity=".52"/>
+      </svg>
+      <span class="brand-name"><b>Intelligent</b><span>side</span></span>
+    </a>
+
+    <nav id="primary-nav" class="nav" aria-label="Primary">
+      <a href="../scheduling-systems/">Scheduling systems</a>
+      <a href="./" aria-current="page">Who it serves</a>
+      <a href="../about/">About</a>
+      <a href="../contact/">Contact</a>
+    </nav>
+
+    <div class="header-tools">
+      <a class="btn btn--primary btn--sm header-call" href="tel:+447848174335">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        <span class="label">+44 7848 174335</span>
+      </a>
+
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch theme">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="../">Home</a><span>/</span>Who it serves</p>
+      <p class="eyebrow">Problem shapes</p>
+      <h1>Four ways a week goes wrong.</h1>
+      <p class="lede">
+        These describe shapes of scheduling problem, not a client list. No customer work
+        gets named on this site until there is a signed reference to name.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--edge">
+    <div class="wrap">
+      <div data-tabs>
+        <div class="tabs" role="tablist" aria-label="Scheduling problem shapes">
+          <button class="tab" type="button" role="tab" id="tab-field" aria-controls="panel-field" aria-selected="true">Field service</button>
+          <button class="tab" type="button" role="tab" id="tab-appt" aria-controls="panel-appt" aria-selected="false">Appointments</button>
+          <button class="tab" type="button" role="tab" id="tab-rota" aria-controls="panel-rota" aria-selected="false">Shift rotas</button>
+          <button class="tab" type="button" role="tab" id="tab-bay" aria-controls="panel-bay" aria-selected="false">Bays and workshops</button>
+        </div>
+
+        <div class="tabpanel" role="tabpanel" id="panel-field" aria-labelledby="tab-field" tabindex="0">
+          <div>
+            <h2>Field service</h2>
+            <p class="lede">
+              Engineers moving between sites all day, where travel time quietly decides
+              whether the last job happens at all.
+            </p>
+            <ul class="tick-list">
+              <li>Travel modelled between actual locations, not a flat allowance</li>
+              <li>Skills and parts checked before a job gets assigned</li>
+              <li>Customer promise times visible while the day gets planned</li>
+            </ul>
+          </div>
+          <div class="compare">
+            <div class="compare-row"><b>Today</b><p>The plan gets drawn the night before. One late job at ten and the rest of the day gets rebuilt over the phone, by the person with the best memory.</p></div>
+            <div class="compare-row" data-tone="after"><b>With a system</b><p>A slip triggers a rebuild of what remains. The customers affected get told before they think to ring, and the reason for each move is recorded.</p></div>
+          </div>
+        </div>
+
+        <div class="tabpanel" role="tabpanel" id="panel-appt" aria-labelledby="tab-appt" tabindex="0" hidden>
+          <div>
+            <h2>Appointments</h2>
+            <p class="lede">
+              Rooms, staff and equipment that all have to line up at the same moment,
+              against a booking someone has already been promised.
+            </p>
+            <ul class="tick-list">
+              <li>Room, person and kit held as one linked booking</li>
+              <li>Cancellations offered to the waiting list at once</li>
+              <li>Preparation and turnaround time counted as real work</li>
+            </ul>
+          </div>
+          <div class="compare">
+            <div class="compare-row"><b>Today</b><p>Three diaries hold three versions of the truth. Gaps nobody notices sit next to double bookings nobody predicted.</p></div>
+            <div class="compare-row" data-tone="after"><b>With a system</b><p>One model holds every resource together, so a slot only exists when all of it is genuinely available.</p></div>
+          </div>
+        </div>
+
+        <div class="tabpanel" role="tabpanel" id="panel-rota" aria-labelledby="tab-rota" tabindex="0" hidden>
+          <div>
+            <h2>Shift rotas</h2>
+            <p class="lede">
+              Coverage that has to hold across weeks, with leave, skills mix and working
+              time rules all pulling against each other.
+            </p>
+            <ul class="tick-list">
+              <li>Working time limits and rest periods applied, never assumed</li>
+              <li>Skills mix checked on every shift, not just on paper</li>
+              <li>Unpopular shifts spread evenly and the spread made visible</li>
+            </ul>
+          </div>
+          <div class="compare">
+            <div class="compare-row"><b>Today</b><p>A spreadsheet only one person really understands, rebuilt each month, where fairness gets argued rather than measured.</p></div>
+            <div class="compare-row" data-tone="after"><b>With a system</b><p>Rules stated once and applied every cycle. The reasoning behind a rota can be inspected by anyone who asks.</p></div>
+          </div>
+        </div>
+
+        <div class="tabpanel" role="tabpanel" id="panel-bay" aria-labelledby="tab-bay" tabindex="0" hidden>
+          <div>
+            <h2>Bays and workshops</h2>
+            <p class="lede">
+              Fixed capacity that will not stretch, where the binding constraint is a bay,
+              a lift or a machine rather than a person.
+            </p>
+            <ul class="tick-list">
+              <li>Physical capacity treated as the hard limit it actually is</li>
+              <li>Queue position and promised dates linked to real throughput</li>
+              <li>Servicing and calibration windows blocked well in advance</li>
+            </ul>
+          </div>
+          <div class="compare">
+            <div class="compare-row"><b>Today</b><p>Work gets accepted on optimism, then queues in the yard while one bay absorbs every difficult job.</p></div>
+            <div class="compare-row" data-tone="after"><b>With a system</b><p>The model says no early, which costs far less than saying sorry late, and it shows the capacity that would change the answer.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--edge">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Signals</p>
+        <h2>Worth a call if any of these sound like the week.</h2>
+      </div>
+      <ul class="tick-list mt-m measure" data-reveal>
+        <li>The schedule lives in one person's head, and holidays get planned around them</li>
+        <li>A change at nine in the morning costs an hour of phone calls</li>
+        <li>Nobody can say what today's capacity actually is until the day ends</li>
+        <li>The plan looks fine and the team knows by lunchtime that it was not</li>
+        <li>Work gets promised on optimism, then explained away afterwards</li>
+        <li>Two teams keep separate diaries and both believe theirs is correct</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="band" data-reveal>
+        <div>
+          <h2>None of these quite fit?</h2>
+          <p>Scheduling problems rarely match a category cleanly. Describe the week and get a straight answer on whether a system is the right tool.</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="tel:+447848174335">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            +44 7848 174335
+          </a>
+          <a class="btn btn--ghost" href="../contact/">Send a message</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="../" aria-label="Intelligentside home">
+          <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+            <circle class="ring" cx="16" cy="16" r="12.2" fill="none" stroke-width="1.5" stroke-opacity=".55"/>
+            <rect class="beam" x="8.4" y="10.6" width="10.6" height="2.9" rx="1.45"/>
+            <rect class="beam" x="12.2" y="14.6" width="11.4" height="2.9" rx="1.45" fill-opacity=".76"/>
+            <rect class="beam" x="8.4" y="18.6" width="7.6" height="2.9" rx="1.45" fill-opacity=".52"/>
+          </svg>
+          <span class="brand-name"><b>Intelligent</b><span>side</span></span>
+        </a>
+        <p class="footer-blurb">
+          Scheduling systems designed to hold up in the real week, and to stay useful as
+          the work changes.
+        </p>
+      </div>
+
+      <nav aria-labelledby="foot-site">
+        <h2 id="foot-site">Site</h2>
+        <div class="footer-links">
+          <a href="../scheduling-systems/">Scheduling systems</a>
+          <a href="./">Who it serves</a>
+          <a href="../about/">About</a>
+          <a href="../contact/">Contact</a>
+        </div>
+      </nav>
+
+      <nav aria-labelledby="foot-legal">
+        <h2 id="foot-legal">Legal</h2>
+        <div class="footer-links">
+          <a href="../privacy/">Privacy policy</a>
+          <a href="../terms/">Terms of use</a>
+          <a href="../cookies/">Cookie notice</a>
+        </div>
+      </nav>
+
+      <div>
+        <h2>Contact</h2>
+        <div class="footer-links">
+          <a href="tel:+447848174335">+44 7848 174335</a>
+          <a href="mailto:me@hashaamshahid.com">me@hashaamshahid.com</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="colophon">
+      <span>&copy; <span data-year>2026</span> Intelligentside. All rights reserved.</span>
+      <span><a href="../privacy/">Privacy</a> &middot; <a href="../terms/">Terms</a> &middot; <a href="../cookies/">Cookies</a></span>
+    </p>
+  </div>
+</footer>
+
+<div class="consent" data-consent hidden>
+  <p>This site would like to measure page visits. Nothing loads until you choose.</p>
+  <div class="btn-row">
+    <button class="btn btn--ghost btn--sm" type="button" data-consent-no>Decline</button>
+    <button class="btn btn--primary btn--sm" type="button" data-consent-yes>Allow</button>
+  </div>
+</div>
+
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/site.js" defer></script>
+<script src="../assets/js/field.js" defer></script>
+</body>
+</html>
