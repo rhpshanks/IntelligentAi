@@ -26,13 +26,27 @@ reported 0 errors and 0 warnings across 9 pages.
 browser. Utilisation, finish time and solve time describe that computation only.
 This is stated under the model, in the terms of use, and in the source comments.
 
+**Note on the call flow.** `/how-it-works/` runs a scripted walk through the
+call handling sequence. Its clock is written into the script rather than
+measured, the caller number sits inside the range Ofcom reserves for fiction,
+and the page says both. No timing on that page should be read as a service
+level, and no claim is made that any organisation is live on it.
+
+**Positioning conflict, open.** The call flow describes an assistant that
+answers calls and books appointments. The rest of the site describes
+constraint based workforce scheduling: rotas, travel time, kit, bay capacity.
+These are two different products and the copy has not yet been reconciled. Until
+it is, a visitor arriving on the home page and a visitor arriving on the call
+flow page will form different ideas of what the business sells. This is the
+largest open item on the site.
+
 ---
 
 ## Section 6. Site structure
 
 | Clause | Status | Note |
 |---|---|---|
-| Eight phase one pages | Met | All eight built at the paths named in the SOP |
+| Eight phase one pages | Met, plus one | All eight built at the paths named in the SOP. A ninth, `/how-it-works/`, was added later and is **not** in the SOP page list, so section 6.1 needs amending at the next review |
 | Maximum two clicks to any page | Met | Every page is in the header or footer, so one click from anywhere |
 | Phone and contact link in header and footer of every page | Met | Header call button plus footer contact column |
 | One primary call to action per page | Met | Each page ends on a single call band |

@@ -152,6 +152,7 @@ root, which is the intended production setup.
 ```
 .
 ├── index.html                  Home, with the live scheduling model
+├── how-it-works/               Call flow, ring to review, runnable
 ├── scheduling-systems/         Capability detail, second model under load
 ├── who-we-serve/               Four problem shapes, tabbed
 ├── about/                      Position, definitions, what is not claimed
@@ -166,6 +167,7 @@ root, which is the intended production setup.
 │   ├── js/site.js              Nav, theme, reveals, tabs, form, consent
 │   ├── js/field.js             Canvas background
 │   ├── js/scheduler.js         The interactive scheduling engine
+│   ├── js/callflow.js          The call flow simulation
 │   └── img/                    Icons and the social card
 ├── tools/check-site.py         Pre-release checker
 ├── package.json                Records @vercel/analytics. No build step
