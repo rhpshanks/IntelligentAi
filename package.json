@@ -1,0 +1,18 @@
+{
+  "name": "intelligentside-site",
+  "version": "1.0.0",
+  "description": "The public website for Intelligentside.",
+  "private": true,
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhpshanks/IntelligentAi.git"
+  },
+  "scripts": {
+    "check": "python tools/check-site.py",
+    "serve": "python -m http.server 5173 --directory ."
+  },
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}

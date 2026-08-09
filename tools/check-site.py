@@ -223,7 +223,8 @@ def check(path):
 def main():
     pages = []
     for base, dirs, files in os.walk(ROOT):
-        dirs[:] = [d for d in dirs if d not in (".git", ".github", "tools")]
+        dirs[:] = [d for d in dirs
+                   if d not in (".git", ".github", "tools", "node_modules", ".vercel")]
         for name in files:
             if name.endswith(".html"):
                 pages.append(os.path.join(base, name))

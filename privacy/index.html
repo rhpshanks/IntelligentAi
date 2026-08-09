@@ -96,9 +96,10 @@
 
         <p>
           <strong>The short version.</strong> This site sets no cookies and runs no
-          advertising or tracking scripts. The only personal data reaching Intelligentside
-          is what a visitor chooses to type into the contact form or send by email. It gets
-          used to reply, and for nothing else.
+          advertising scripts. It counts page views, and only once you have accepted the
+          notice shown on a first visit. The only personal data reaching Intelligentside is
+          what a visitor chooses to type into the contact form or send by email, and it gets
+          used to reply, for nothing else.
         </p>
 
         <h2>1. Who controls this data</h2>
@@ -127,9 +128,14 @@
               <td>To keep the site running and to spot abuse</td>
             </tr>
             <tr>
-              <td>Theme choice (light or dark)</td>
+              <td>Page viewed, referring page, and coarse signals such as country, browser and device type</td>
+              <td>Vercel Web Analytics, and only for visitors who accept the measurement notice</td>
+              <td>To see which pages get read, so the site can be improved</td>
+            </tr>
+            <tr>
+              <td>Theme choice, and the answer given to the measurement notice</td>
               <td>Stored inside your own browser</td>
-              <td>To keep the site looking the way you left it. This never leaves the device</td>
+              <td>To keep the site looking the way you left it, and to stop the notice asking twice. Neither ever leaves the device</td>
             </tr>
           </tbody>
         </table>
@@ -141,6 +147,8 @@
           <li>No profiling and no automated decision making</li>
           <li>No marketing list. An enquiry gets a reply, not a sequence of emails</li>
           <li>No cookies set by this site, as set out in the <a href="../cookies/">cookie notice</a></li>
+          <li>No measurement at all until a visitor accepts it, and no tracking across other websites</li>
+          <li>No linking of page view data to an enquiry, or to any named person</li>
         </ul>
 
         <h2>4. Lawful basis</h2>
@@ -155,6 +163,11 @@
             business, balanced against a visitor's reasonable expectation that a message
             sent gets read and answered.
           </li>
+          <li>
+            <strong>Consent.</strong> Page view measurement, and nothing else, relies on
+            consent. It happens only where a visitor accepts the notice, and withdrawing is
+            as simple as clearing site data in the browser, which makes the notice ask again.
+          </li>
         </ul>
 
         <h2>5. Who else sees it</h2>
@@ -163,6 +176,7 @@
           <li><strong>Hosting provider.</strong> Serves the site and keeps standard server logs</li>
           <li><strong>Email provider.</strong> Carries and stores messages sent to the address above</li>
           <li><strong>Form handler.</strong> Only where the contact form gets connected to one. While the form composes a message in your own mail app instead, no third party sees it at all</li>
+          <li><strong>Measurement provider.</strong> Vercel Inc., which operates Vercel Web Analytics, and only for visitors who accept the measurement notice</li>
         </ul>
         <p>Nothing gets passed to any other party except where the law requires it.</p>
 
@@ -170,8 +184,10 @@
         <p>
           Enquiry correspondence gets kept for [retention period, suggested 24 months] from
           the last contact, then deleted. Server logs get kept for the period set by the
-          hosting provider, typically a short window measured in days. Ask for deletion at
-          any time and it gets actioned.
+          hosting provider, typically a short window measured in days. Page view measurement
+          sits with the measurement provider under its own schedule,
+          [measurement retention period, to confirm from the provider's documentation].
+          Ask for deletion of correspondence at any time and it gets actioned.
         </p>
 
         <h2>7. Where it goes</h2>
@@ -279,6 +295,7 @@
 </div>
 
 <script src="../assets/js/config.js"></script>
+<script src="../assets/js/analytics.js" defer></script>
 <script src="../assets/js/site.js" defer></script>
 <script src="../assets/js/field.js" defer></script>
 </body>

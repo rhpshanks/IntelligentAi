@@ -18,9 +18,12 @@ window.IS_CONFIG = {
   phoneDisplay: '+44 7848 174335',
   phoneDial: '+447848174335',
 
-  /* Measurement. While this stays empty the site sets no non-essential
-     cookies, loads no third party script, and shows no consent banner,
-     which is the correct position under UK and EU cookie rules.
-     Set an ID to switch on the consent banner and the loader in site.js. */
-  analyticsId: ''
+  /* Measurement. Any non-empty value switches on the consent notice; the
+     measurement script then loads only once a visitor accepts, never before.
+     Set this back to '' to remove the notice and all measurement.
+
+     'vercel' selects Vercel Web Analytics, wired in assets/js/analytics.js.
+     That script is served by Vercel's edge at /_vercel/insights/script.js, so
+     it reports nothing on a host other than Vercel. */
+  analyticsId: 'vercel'
 };

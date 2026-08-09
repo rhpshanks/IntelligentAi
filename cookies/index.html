@@ -88,15 +88,15 @@
       <div class="prose">
 
         <p>
-          <strong>This site sets no cookies.</strong> Not for analytics, not for advertising,
-          not for anything else. That is why no consent banner interrupts a visit: with no
-          non-essential storage in play, there is nothing to ask permission for.
+          <strong>This site sets no cookies.</strong> Not for advertising, not for
+          measurement, not for anything else. It does load one measurement script, and only
+          after you accept the notice shown on a first visit. Decline and it never loads.
         </p>
 
         <h2>What does get stored</h2>
         <p>
-          One item gets written into the browser's own local storage. Local storage is not a
-          cookie: it never travels with a request, and no server ever receives it.
+          Two items may get written into the browser's own local storage. Local storage is
+          not a cookie: it never travels with a request, and no server ever receives it.
         </p>
 
         <table>
@@ -111,13 +111,21 @@
               <td>Keeps the theme you picked using the toggle in the header</td>
               <td>Until cleared in the browser</td>
             </tr>
+            <tr>
+              <td><code>is-consent</code></td>
+              <td>The word yes or no</td>
+              <td>Remembers your answer to the measurement notice, so it stops asking</td>
+              <td>Until cleared in the browser</td>
+            </tr>
           </tbody>
         </table>
 
         <p>
-          Nothing gets written until the theme toggle actually gets pressed. Blocking storage
-          entirely leaves the site fully usable: it simply follows the light or dark setting
-          the device already has.
+          Neither key gets written until you act: one when the theme toggle gets pressed, the
+          other when you answer the measurement notice. Recording a choice about measurement
+          counts as strictly necessary, so it needs no separate permission of its own.
+          Blocking storage altogether leaves the site fully usable; the notice simply asks
+          again on the next visit.
         </p>
 
         <h2>What the hosting provider records</h2>
@@ -128,32 +136,43 @@
           <a href="../privacy/">privacy policy</a> covers them in full.
         </p>
 
-        <h2>No third party scripts</h2>
+        <h2>Scripts on this site</h2>
         <p>
-          Every script, style, font and image on this site is served from intelligentside.com
-          itself. No advertising network, analytics service, social widget, embedded video,
-          web font service or tag manager gets loaded. A strict content security policy on
-          every page enforces this rather than merely promising it.
+          Every style, font and image, and every script that runs before consent, is served
+          from intelligentside.com itself. No advertising network, social widget, embedded
+          video, web font service or tag manager gets loaded anywhere on the site. A strict
+          content security policy on every page enforces that rather than merely promising
+          it: it permits no third party origin at all.
         </p>
 
-        <h2>If measurement gets added later</h2>
+        <h2>Measurement</h2>
         <p>
-          Visitor measurement may get switched on at some point. If that happens:
+          This site counts page views using Vercel Web Analytics. Vercel publishes it as a
+          cookieless product, meaning it reports visits without storing an identifier on your
+          device. Vercel Inc. acts as the processor, and its own documentation is the
+          authority on what the product collects and how long it holds it.
         </p>
         <ul>
-          <li>A notice appears first, and nothing loads until a choice gets made</li>
+          <li>The notice appears first, and the script loads only once you accept</li>
           <li>Declining is as easy as accepting, and a decline gets respected</li>
-          <li>The choice gets recorded under the key <code>is-consent</code></li>
-          <li>This page gets updated to name the provider, the data involved, and its retention period</li>
+          <li>Your answer gets recorded under the key <code>is-consent</code></li>
+          <li>The script is served from this domain, so no request travels to a third party host</li>
+          <li>Nothing about an individual visitor reaches Intelligentside: the reporting shows totals per page</li>
         </ul>
-        <p>The measurement script cannot load ahead of consent: that ordering is built into the site code, not left to configuration.</p>
+        <p>
+          The measurement script cannot load ahead of consent. That ordering sits in the site
+          code rather than in a configuration setting, so it cannot get switched off by
+          accident. Change your mind by clearing site data for intelligentside.com, and the
+          notice asks again.
+        </p>
 
         <h2>Clearing what is stored</h2>
         <p>
           Every browser offers a way to clear site data. It usually sits under Settings, then
           Privacy, then a control named along the lines of clear browsing data or site
-          settings. Clearing it for intelligentside.com removes the theme preference, and
-          nothing else is affected.
+          settings. Clearing it for intelligentside.com removes the theme preference and the
+          answer to the measurement notice. Nothing else is affected, and the site keeps
+          working exactly as before.
         </p>
 
         <h2>Questions</h2>
@@ -231,6 +250,7 @@
 </div>
 
 <script src="../assets/js/config.js"></script>
+<script src="../assets/js/analytics.js" defer></script>
 <script src="../assets/js/site.js" defer></script>
 <script src="../assets/js/field.js" defer></script>
 </body>

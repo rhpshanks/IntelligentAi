@@ -93,7 +93,7 @@ found so far suggests a problem, but automated checks cannot replace it.
 |---|---|
 | HTTPS enforced | Pending host setup. Every page sends `upgrade-insecure-requests`; tick Enforce HTTPS in GitHub Pages once the certificate issues |
 | Spam protection that does not block real visitors | Met. A hidden honeypot field plus a 1.2 second floor on time with the page. No CAPTCHA, no puzzle, nothing for a visitor to solve |
-| Dependencies patched within 14 days | Met by having none. No packages, no plugins, no supply chain |
+| Dependencies patched within 14 days | Met. Nothing from `node_modules` is served: the pages ship no bundled or vendored third party code, so there is no runtime supply chain to patch. One npm entry, `@vercel/analytics`, is recorded in `package.json` as the reference for the measurement behaviour and should be kept current with `npm outdated` at the monthly maintenance point |
 | Two-factor on admin logins | Owner action, outside the codebase |
 | Additional | A strict `Content-Security-Policy` on every page: no inline script, no inline style, no third party origin |
 
@@ -110,13 +110,27 @@ found so far suggests a problem, but automated checks cannot replace it.
 
 | Clause | Status |
 |---|---|
-| One analytics tool, loading only after consent | Deliberately not installed. With no `analyticsId` set the site sets no non-essential storage, so no banner is warranted, which is the correct position under UK and EU cookie rules |
-| Goal tracking for form submission, phone tap, email tap | Pending, and dependent on the choice above |
+| One analytics tool, loading only after consent | Met. Vercel Web Analytics, and nothing else. Verified in the browser: no measurement script exists in the document before a visitor accepts; declining leaves none and records the refusal; accepting injects it; a returning visitor who accepted gets it on load without being asked twice |
+| Goal tracking for form submission, phone tap, email tap | **Not met.** Page views only. Custom events on Vercel Web Analytics need a paid plan, so this waits on that decision |
 
-The consent mechanism is built and tested. Setting `analyticsId` in
-`config.js` shows the banner and fires `is:consentgranted` only after the
-visitor accepts. The measurement script cannot load ahead of consent because
-the ordering is in the code, not in configuration.
+**Hosting dependency worth recording.** The script is served by Vercel's edge at
+`/_vercel/insights/script.js`. On GitHub Pages, where the site is published
+today, that path returns 404 and no measurement happens. The loader handles the
+failure quietly, though the browser still logs the failed request. Measurement
+starts working the moment hosting moves to Vercel, with no code change.
+Setting `analyticsId` to `''` in `config.js` removes the notice and the request
+entirely in the meantime.
+
+**Why the consent notice stays.** Vercel publishes Web Analytics as a cookieless
+product, which arguably places it outside the storage rules that make a banner
+compulsory. The notice stays anyway, because the cookie notice published to
+visitors promises that nothing loads before they choose. Keeping a published
+promise is worth more than the small friction of asking.
+
+**Verification still owed:** confirm Vercel's current published position on what
+Web Analytics collects and how long it retains it, then fill the retention
+placeholder in `privacy/index.html` and add a link to the provider's own notice
+from `cookies/index.html`.
 
 ---
 
@@ -134,8 +148,11 @@ the ordering is in the code, not in configuration.
 ## Section 13. Access control
 
 Outside the codebase. One point matters here: nothing secret lives in this
-repository. `config.js` holds only public values, and no form endpoint or
-measurement ID is committed. Treat every file here as public, because it is.
+repository. `config.js` holds only public values. The measurement setting is the
+word `vercel`, which is a provider selector and not a key: Vercel Web Analytics
+carries no token, because it identifies the project by the deployment serving it.
+No form endpoint is committed either. Treat every file here as public, because
+it is.
 
 ---
 
@@ -149,6 +166,8 @@ measurement ID is committed. Treat every file here as public, because it is.
 6. Whether the offer is a product, a build service, or both. This one shapes the
    home page more than any other open item
 7. Launch date
+8. Retention period for page view measurement, to confirm from the provider
+9. Whether hosting moves to Vercel, which decides whether measurement works at all
 
-Items 1, 2 and 4 block indexing of the two legal pages. The rest do not block
+Items 1, 2, 4 and 8 block indexing of the two legal pages. The rest do not block
 launch, but each one currently costs sharpness in the copy.

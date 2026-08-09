@@ -1,0 +1,12 @@
+# Dependencies. The site itself ships no bundled JavaScript, so nothing here
+# is needed to serve it. See README for how analytics gets loaded at runtime.
+node_modules/
+
+# Vercel
+.vercel/
+
+# Logs and local noise
+npm-debug.log*
+*.log
+.DS_Store
+Thumbs.db

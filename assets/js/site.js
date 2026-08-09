@@ -369,7 +369,7 @@
       }));
     }
 
-    if (saved === 'yes') { loadMeasurement(); return; }
+    if (saved === 'yes') { bar.remove(); loadMeasurement(); return; }
     if (saved === 'no') { bar.remove(); return; }
 
     bar.hidden = false;

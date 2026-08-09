@@ -1,8 +1,13 @@
 # intelligentside.com
 
 The public website for Intelligentside, built to the standard set in
-`SOP-WEB-001`. Static HTML, CSS and JavaScript. No build step, no package
-manager, no dependencies.
+`SOP-WEB-001`. Static HTML, CSS and JavaScript, served exactly as committed.
+
+There is no build step. Nothing gets compiled, bundled or transpiled, and
+`node_modules` never reaches the server. The single npm dependency,
+`@vercel/analytics`, is recorded in `package.json` as the reference for the
+measurement behaviour described below; the pages themselves load nothing from
+it. Serving this repository as plain files is the whole deployment.
 
 ---
 
@@ -67,11 +72,46 @@ Everything adjustable lives in `assets/js/config.js`.
 | `formEndpoint` | Empty by default. The contact form then opens a pre-filled message in the visitor's mail app. Paste a POST endpoint (Formspree, Basin, Web3Forms) to switch to background submission. **Also add that host to `connect-src` in the contact page's CSP, or the browser blocks the request.** |
 | `email` | Where enquiries land. Currently `me@hashaamshahid.com` |
 | `phoneDisplay` / `phoneDial` | Display and dial formats, kept separate on purpose |
-| `analyticsId` | Empty by default, which means no cookies, no third party script, and no consent banner. Setting an ID switches the banner on and fires an `is:consentgranted` event once the visitor accepts. Wire the provider to that event in `site.js`, never earlier. |
+| `analyticsId` | Currently `'vercel'`. Any non-empty value switches on the consent notice and fires `is:consentgranted` once a visitor accepts. Set it to `''` to remove the notice and all measurement. See below. |
 
 Changing the phone number or email means editing the HTML too: both appear in
 the markup so they work without JavaScript. `tools/check-site.py` fails the
 build if a `tel:` link drifts out of step.
+
+---
+
+## Analytics
+
+Vercel Web Analytics, counting page views, held behind the consent notice.
+
+**It only reports data when the site is served from Vercel.** The script lives
+at `/_vercel/insights/script.js`, a path Vercel's edge serves. On GitHub Pages,
+or any other host, that request returns 404, the loader in
+`assets/js/analytics.js` catches it, and nothing else is affected. The browser
+still logs the failed request, so expect one console 404 per page load while the
+site sits anywhere other than Vercel. Set `analyticsId` to `''` in
+`config.js` to silence it until hosting moves.
+
+Two properties are worth preserving if this ever gets changed:
+
+1. **Same origin.** Because the script is served from this domain, the strict
+   `Content-Security-Policy` on every page needs no third party host added to it.
+   A provider that loads from its own domain would mean widening `script-src`
+   and `connect-src` on all nine pages.
+2. **Consent first.** `analytics.js` only ever loads on the `is:consentgranted`
+   event, which `site.js` fires after a visitor accepts. That ordering is in the
+   code rather than in configuration, and the cookie notice makes it a promise
+   to visitors. Loading measurement earlier would make that notice untrue.
+
+`assets/js/analytics.js` must stay ahead of `site.js` in the page, because
+`site.js` fires the event the moment it runs for a visitor who accepted on an
+earlier visit.
+
+### If the provider changes
+
+Three files carry statements that must stay true: `cookies/index.html`,
+`privacy/index.html`, and `docs/sop-compliance.md`. Update all three in the same
+commit as any change to what loads.
 
 ---
 
@@ -122,11 +162,13 @@ root, which is the intended production setup.
 │   ├── css/site.css            Whole design system, one file
 │   ├── js/theme.js             Runs before paint: theme, and the .js flag
 │   ├── js/config.js            The only file to edit for configuration
+│   ├── js/analytics.js         Measurement loader, consent gated
 │   ├── js/site.js              Nav, theme, reveals, tabs, form, consent
 │   ├── js/field.js             Canvas background
 │   ├── js/scheduler.js         The interactive scheduling engine
 │   └── img/                    Icons and the social card
 ├── tools/check-site.py         Pre-release checker
+├── package.json                Records @vercel/analytics. No build step
 └── docs/sop-compliance.md      Line by line against SOP-WEB-001
 ```
 
@@ -134,9 +176,10 @@ root, which is the intended production setup.
 
 ## Design decisions worth knowing
 
-- **No third party requests at all.** No web fonts, no CDN, no analytics, no
-  embeds. A strict `Content-Security-Policy` on every page enforces it rather
-  than merely promising it. This is what lets the cookie notice say what it says.
+- **No third party origins.** No web fonts, no CDN, no embeds, no tag manager.
+  A strict `Content-Security-Policy` on every page enforces it rather than
+  merely promising it, and it permits no external host. Measurement is the one
+  addition, and it loads same origin behind consent, so the policy stays intact.
 - **System font stack.** Nothing to download, nothing that blocks the first paint.
 - **Graphics are SVG or small PNG.** Total page weight stays far inside the 2 MB
   ceiling in SOP-WEB-001 section 8.1.
