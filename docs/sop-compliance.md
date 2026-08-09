@@ -22,8 +22,8 @@ reported 0 errors and 0 warnings across 9 pages.
 | 5.3 Tone: plain English, short sentences, second person | Met | Throughout |
 | 5.3 First screen answers what, who, what next | Met | Home hero: statement, audience, two calls to action |
 
-**Note on the model.** The interactive scheduler generates its own demand in the
-browser. Utilisation, finish time and solve time describe that computation only.
+**Note on the diary model.** It generates its own booking requests in the
+browser. Occupancy, finish time and rebuild time describe that computation only.
 This is stated under the model, in the terms of use, and in the source comments.
 
 **Note on the call flow.** `/how-it-works/` runs a scripted walk through the
@@ -32,13 +32,23 @@ measured, the caller number sits inside the range Ofcom reserves for fiction,
 and the page says both. No timing on that page should be read as a service
 level, and no claim is made that any organisation is live on it.
 
-**Positioning conflict, open.** The call flow describes an assistant that
-answers calls and books appointments. The rest of the site describes
-constraint based workforce scheduling: rotas, travel time, kit, bay capacity.
-These are two different products and the copy has not yet been reconciled. Until
-it is, a visitor arriving on the home page and a visitor arriving on the call
-flow page will form different ideas of what the business sells. This is the
-largest open item on the site.
+**Positioning conflict, closed.** An earlier version of this site described
+workforce scheduling: rotas, travel time between sites, shared kit, bay
+capacity. That was the wrong product. Every page now describes one service,
+appointment booking by phone, and the two demonstrations serve it: the call
+flow shows how a call becomes a booking, and the diary model shows where that
+booking lands.
+
+The diary model reuses the placement engine written for the earlier
+positioning. That is deliberate rather than lazy: placing appointments across
+people, honouring linked visits and a finite working day, is the same problem.
+Its wording, resource names and appointment types were rewritten, so nothing on
+screen still refers to rotas or crews.
+
+**URL change.** `/scheduling-systems/` became `/appointment-booking/`. The old
+path now returns 404, which is safe because the site had never been published
+or indexed at the time of the change. Publishing first and renaming later would
+have needed a redirect.
 
 ---
 
@@ -46,7 +56,7 @@ largest open item on the site.
 
 | Clause | Status | Note |
 |---|---|---|
-| Eight phase one pages | Met, plus one | All eight built at the paths named in the SOP. A ninth, `/how-it-works/`, was added later and is **not** in the SOP page list, so section 6.1 needs amending at the next review |
+| Eight phase one pages | Met, with changes | Nine pages now. `/how-it-works/` was added, and `/scheduling-systems/` became `/appointment-booking/`. Neither change is reflected in SOP section 6.1, which **needs amending at the next review**, along with section 5.1, whose approved statements still describe workforce scheduling |
 | Maximum two clicks to any page | Met | Every page is in the header or footer, so one click from anywhere |
 | Phone and contact link in header and footer of every page | Met | Header call button plus footer contact column |
 | One primary call to action per page | Met | Each page ends on a single call band |

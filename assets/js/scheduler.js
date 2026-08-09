@@ -1,12 +1,14 @@
 /* ---------------------------------------------------------------------------
-   Interactive scheduling model.
+   Interactive appointment diary.
 
-   A working list scheduler that runs entirely in the visitor's browser.
-   It respects job order (dependencies), resource eligibility, release times
-   and a finite horizon, then reports makespan and utilisation.
+   The assistant books into a diary with real limits, and this models that
+   diary. It places booking requests across the people taking appointments,
+   respecting linked visits (a follow-up cannot precede the first appointment),
+   earliest availability and the length of the working day, then reports how
+   full the diary ended up and when it finishes.
 
-   Every figure it shows is computed live on this page. No claim about real
-   client work is made or implied anywhere in this module.
+   Every figure it shows is computed live in the visitor's browser. No claim
+   about real client bookings is made or implied anywhere in this module.
    --------------------------------------------------------------------------- */
 (function () {
   'use strict';
@@ -15,14 +17,14 @@
   var DAY_START = 9 * 60;
 
   var LABELS = [
-    'Intake call', 'Site visit', 'Install', 'Handover', 'Kit check',
-    'Client review', 'Dispatch', 'Callback', 'Survey', 'Repair',
-    'Test run', 'Sign off', 'Delivery', 'Training', 'Inspection',
-    'Setup', 'Audit', 'Stock pull', 'Fitting', 'Debrief', 'Prep',
-    'Service call'
+    'New client', 'Follow-up', 'Consultation', 'Check-up', 'Fitting',
+    'Assessment', 'Treatment', 'Repair', 'Service', 'Callout',
+    'Inspection', 'Valuation', 'Deep clean', 'Scan', 'Test',
+    'Quote visit', 'Diagnostic', 'Handover', 'Review visit', 'Trim',
+    'Colour', 'Second opinion'
   ];
 
-  var TEAMS = ['Team A', 'Team B', 'Team C', 'Team D', 'Team E', 'Team F'];
+  var TEAMS = ['Room 1', 'Room 2', 'Room 3', 'Room 4', 'Room 5', 'Room 6'];
 
   function clockOf(slot) {
     var mins = DAY_START + slot * SLOT_MINUTES;
@@ -304,16 +306,17 @@
         leftover.hidden = false;
         leftover.textContent = 'Beyond capacity today: ' +
           result.unplaced.map(function (job) { return job.label; }).join(', ') +
-          '. Add a team or permit extended hours.';
+          '. The assistant offers these callers the next open day rather than ' +
+          'squeezing them in. Add a room or open late slots to take them today.';
       } else {
         leftover.hidden = true;
         leftover.textContent = '';
       }
 
-      status.textContent = 'Schedule rebuilt. ' + result.placed.length + ' of ' + total +
-        ' jobs placed across ' + result.laneCount + ' teams. Last finish ' +
-        (result.makespan ? clockOf(result.makespan) : 'none') + '. Utilisation ' +
-        result.utilisation + ' percent. Model solved in ' + result.millis.toFixed(1) +
+      status.textContent = 'Diary rebuilt. ' + result.placed.length + ' of ' + total +
+        ' bookings placed across ' + result.laneCount + ' rooms. Day ends ' +
+        (result.makespan ? clockOf(result.makespan) : 'none') + '. Diary ' +
+        result.utilisation + ' percent full. Rebuilt in ' + result.millis.toFixed(1) +
         ' milliseconds.';
     }
 

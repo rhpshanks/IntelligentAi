@@ -151,9 +151,9 @@ root, which is the intended production setup.
 
 ```
 .
-├── index.html                  Home, with the live scheduling model
+├── index.html                  Home, with the live diary model
 ├── how-it-works/               Call flow, ring to review, runnable
-├── scheduling-systems/         Capability detail, second model under load
+├── appointment-booking/        What the assistant handles, diary under load
 ├── who-we-serve/               Four problem shapes, tabbed
 ├── about/                      Position, definitions, what is not claimed
 ├── contact/                    Form, phone, email
