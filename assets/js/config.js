@@ -21,7 +21,7 @@ window.IS_CONFIG = {
      sending to the address it was issued for, so it cannot be used to mail
      anybody else. It is not a password and it is not a secret. */
   formEndpoint: 'https://api.web3forms.com/submit',
-  formAccessKey: '',
+  formAccessKey: '75dcfcdc-4715-4eb4-aa2d-88bd6fba2b84',
 
   /* Where enquiries land. Used by the mail fallback and shown on the site. */
   email: 'me@hashaamshahid.com',
