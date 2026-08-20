@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self'; form-action 'self'; upgrade-insecure-requests">
 
-<title>Who it serves | Intelligentside</title>
-<meta name="description" content="Four kinds of clinic this fits: injectables and skin, dental and smile clinics, hair restoration, and med spas. Each loses enquiries the same way.">
-<link rel="canonical" href="https://intelligentside.com/who-we-serve/">
+<title>Pricing | Intelligentside</title>
+<meta name="description" content="Three tiers for aesthetics clinics, priced in six currencies: Answer, Grow and Scale. Monthly or yearly, with what each one includes listed in full.">
+<link rel="canonical" href="https://intelligentside.com/pricing/">
 
 <meta name="theme-color" content="#05070D" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#F5F8FC" media="(prefers-color-scheme: light)">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Intelligentside">
-<meta property="og:title" content="Who it serves | Intelligentside">
-<meta property="og:description" content="Four kinds of clinic this fits: injectables and skin, dental and smile clinics, hair restoration, and med spas. Each loses enquiries the same way.">
-<meta property="og:url" content="https://intelligentside.com/who-we-serve/">
+<meta property="og:title" content="Pricing | Intelligentside">
+<meta property="og:description" content="Three tiers for aesthetics clinics, priced in six currencies: Answer, Grow and Scale. Monthly or yearly, with what each one includes listed in full.">
+<meta property="og:url" content="https://intelligentside.com/pricing/">
 <meta property="og:image" content="https://intelligentside.com/assets/img/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -52,7 +52,7 @@
 
     <nav id="primary-nav" class="nav" aria-label="Primary">
       <a href="../services/">Services</a>
-      <a href="../pricing/">Pricing</a>
+      <a href="./" aria-current="page">Pricing</a>
       <a href="../how-it-works/">How it works</a>
       <a href="../about/">About</a>
       <a href="../contact/">Contact</a>
@@ -80,86 +80,138 @@
 
   <section class="page-head">
     <div class="wrap">
-      <p class="crumbs"><a href="../">Home</a><span>/</span>Who it serves</p>
-      <p class="eyebrow">Four kinds of clinic</p>
-      <h1>Treatment led businesses, where a booked chair is the revenue.</h1>
+      <p class="crumbs"><a href="../">Home</a><span>/</span>Pricing</p>
+      <p class="eyebrow">Three tiers</p>
+      <h1>Prices on the page, not behind a form.</h1>
       <p class="lede">
-        These describe shapes of clinic, not a client list. No customer work gets named on
-        this site until there is a signed reference to name.
+        Pick the currency and the billing period. Every tier includes the one below it, so
+        moving up never means losing something.
       </p>
     </div>
   </section>
 
-  <section class="section section--edge">
+  <section class="section section--tight" data-pricing>
     <div class="wrap">
-      <div data-tabs>
-        <div class="tabs" role="tablist" aria-label="Kinds of clinic">
-          <button class="tab" type="button" role="tab" id="tab-skin" aria-controls="panel-skin" aria-selected="true">Injectables and skin</button>
-          <button class="tab" type="button" role="tab" id="tab-dental" aria-controls="panel-dental" aria-selected="false">Dental and smile clinics</button>
-          <button class="tab" type="button" role="tab" id="tab-hair" aria-controls="panel-hair" aria-selected="false">Hair restoration</button>
-          <button class="tab" type="button" role="tab" id="tab-spa" aria-controls="panel-spa" aria-selected="false">Med spas and wellness</button>
+
+      <div class="switch-row" data-reveal>
+        <div class="seg-group">
+          <span class="seg-label" id="money-label">Currency</span>
+          <div class="seg" role="group" aria-labelledby="money-label">
+            <button type="button" data-money="GBP" aria-pressed="false">GBP</button>
+            <button type="button" data-money="USD" aria-pressed="false">USD</button>
+            <button type="button" data-money="EUR" aria-pressed="false">EUR</button>
+            <button type="button" data-money="AED" aria-pressed="false">AED</button>
+            <button type="button" data-money="AUD" aria-pressed="false">AUD</button>
+            <button type="button" data-money="CAD" aria-pressed="false">CAD</button>
+          </div>
         </div>
 
-        <div class="tabpanel" role="tabpanel" id="panel-skin" aria-labelledby="tab-skin" tabindex="0">
-          <div>
-            <h2>Injectables and skin</h2>
-            <p class="lede">Consultation led, repeat visit driven, and judged heavily on reviews. Most enquiries arrive as a message asking what something costs.</p>
-            <ul class="tick-list">
-              <li>Price questions answered from the clinic’s own list, worded the same way every time</li>
-              <li>Consultation booked without a back and forth across three days</li>
-              <li>Repeat and top up visits prompted at the right interval</li>
-            </ul>
-          </div>
-          <div class="compare">
-            <div class="compare-row"><b>Today</b><p>Direct messages pile up during clinic hours and get answered at eleven at night, by which point the enquiry has messaged three other clinics.</p></div>
-            <div class="compare-row" data-tone="after"><b>With Intelligentside</b><p>Every message answered in seconds, quoted correctly, and booked. The clinician watches the diary fill without picking up a phone.</p></div>
+        <div class="seg-group">
+          <span class="seg-label" id="billing-label">Billing</span>
+          <div class="seg" role="group" aria-labelledby="billing-label">
+            <button type="button" data-billing="monthly" aria-pressed="true">Monthly</button>
+            <button type="button" data-billing="yearly" aria-pressed="false">Yearly</button>
           </div>
         </div>
-        <div class="tabpanel" role="tabpanel" id="panel-dental" aria-labelledby="tab-dental" tabindex="0" hidden>
+      </div>
+
+      <p class="visually-hidden" data-price-status role="status" aria-live="polite"></p>
+
+      <div class="tier-grid mt-l">
+        <article class="tier" data-tier="answer" data-reveal>
           <div>
-            <h2>Dental and smile clinics</h2>
-            <p class="lede">High value treatment plans that begin with one nervous enquiry, and a reception desk that cannot be in two places.</p>
-            <ul class="tick-list">
-              <li>Nervous first enquiries handled gently, and passed to a person where they should be</li>
-              <li>Treatment plans booked as a series rather than one visit at a time</li>
-              <li>Anything clinical routed to a human, always, with the transcript attached</li>
-            </ul>
+            <p class="tier-name">Answer</p>
+            <p class="tier-line">The phone and WhatsApp, handled.</p>
           </div>
-          <div class="compare">
-            <div class="compare-row"><b>Today</b><p>Reception is with a patient, the phone rings, and the caller books somewhere with an online diary instead.</p></div>
-            <div class="compare-row" data-tone="after"><b>With Intelligentside</b><p>The phone gets answered while reception stays with the patient in the chair, and the booking appears on the screen behind the desk.</p></div>
+
+          <p class="tier-price">
+            <span class="tier-sym" data-sym>&pound;</span><span class="tier-num" data-num>0</span>
+            <span class="tier-per" data-per>per month</span>
+          </p>
+          <p class="tier-note" data-note>Billed monthly.</p>
+
+          <ul class="tier-list">
+            <li>AI booking on WhatsApp and calls</li>
+            <li>Bookings written into the calendar</li>
+            <li>Confirmations, reminders and reschedules</li>
+            <li>Review requests after attended appointments</li>
+            <li>Monthly report on calls, bookings and misses</li>
+            <li data-off>Social accounts handled</li>
+            <li data-off>Posts made for you</li>
+            <li data-off>Meta ads managed</li>
+            <li data-off>Website</li>
+          </ul>
+
+          <div class="tier-foot">
+            <a class="btn btn--primary" href="../contact/">Talk about Answer</a>
           </div>
-        </div>
-        <div class="tabpanel" role="tabpanel" id="panel-hair" aria-labelledby="tab-hair" tabindex="0" hidden>
+        </article>
+        <article class="tier tier--pick" data-tier="grow" data-reveal>
+          <span class="tier-badge">Most picked</span>
           <div>
-            <h2>Hair restoration</h2>
-            <p class="lede">Long consideration, high ticket, and enquiries that land at midnight from three time zones at once.</p>
-            <ul class="tick-list">
-              <li>Answers at any hour, in the clinic’s own words and prices</li>
-              <li>Photos received and passed to the team, never assessed by machine</li>
-              <li>Consultations booked across time zones without a diary clash</li>
-            </ul>
+            <p class="tier-name">Grow</p>
+            <p class="tier-line">Booked, and visible while it happens.</p>
           </div>
-          <div class="compare">
-            <div class="compare-row"><b>Today</b><p>An enquiry lands at two in the morning, gets read at nine, and answered at noon. By then the lead has cooled and booked elsewhere.</p></div>
-            <div class="compare-row" data-tone="after"><b>With Intelligentside</b><p>It answers at two in the morning and books the consultation before anybody at the clinic has woken up.</p></div>
+
+          <p class="tier-price">
+            <span class="tier-sym" data-sym>&pound;</span><span class="tier-num" data-num>0</span>
+            <span class="tier-per" data-per>per month</span>
+          </p>
+          <p class="tier-note" data-note>Billed monthly.</p>
+
+          <ul class="tier-list">
+            <li>Everything in Answer</li>
+            <li>Two social accounts handled day to day</li>
+            <li>Twelve posts a month, planned and produced</li>
+            <li>Comments and direct messages answered</li>
+            <li>Monthly strategy call</li>
+            <li data-off>Meta ads managed</li>
+            <li data-off>Website</li>
+          </ul>
+
+          <div class="tier-foot">
+            <a class="btn btn--primary" href="../contact/">Talk about Grow</a>
           </div>
-        </div>
-        <div class="tabpanel" role="tabpanel" id="panel-spa" aria-labelledby="tab-spa" tabindex="0" hidden>
+        </article>
+        <article class="tier" data-tier="scale" data-reveal>
           <div>
-            <h2>Med spas and wellness</h2>
-            <p class="lede">Many treatments, many rooms, many staff, and a diary that has to line all three up at the same moment.</p>
-            <ul class="tick-list">
-              <li>Room, therapist and equipment held together as one booking</li>
-              <li>Cancellations offered to the waiting list within seconds of appearing</li>
-              <li>Packages and courses booked as a block rather than one visit at a time</li>
-            </ul>
+            <p class="tier-name">Scale</p>
+            <p class="tier-line">The whole loop, run end to end.</p>
           </div>
-          <div class="compare">
-            <div class="compare-row"><b>Today</b><p>Three staff keep three versions of the diary, and a cancellation stays empty because nobody has a spare moment to fill it.</p></div>
-            <div class="compare-row" data-tone="after"><b>With Intelligentside</b><p>One diary, filled as enquiries arrive, with any gap offered to the waiting list the moment it opens up.</p></div>
+
+          <p class="tier-price">
+            <span class="tier-sym" data-sym>&pound;</span><span class="tier-num" data-num>0</span>
+            <span class="tier-per" data-per>per month</span>
+          </p>
+          <p class="tier-note" data-note>Billed monthly.</p>
+
+          <ul class="tier-list">
+            <li>Everything in Grow</li>
+            <li>A third social account</li>
+            <li>Twenty posts a month</li>
+            <li>Meta ads built, tested and managed</li>
+            <li>Website built and kept current</li>
+            <li>Priority support and a named contact</li>
+          </ul>
+
+          <div class="tier-foot">
+            <a class="btn btn--primary" href="../contact/">Talk about Scale</a>
           </div>
-        </div>
+        </article>
+      </div>
+
+      <div class="mt-l" data-reveal>
+        <p class="price-small">
+          Yearly billing costs ten months for twelve. Prices sit per clinic location and
+          exclude VAT or local sales tax where it applies. Ad spend goes to Meta directly and
+          sits beyond these figures. A one time setup applies to Answer and Grow; the website
+          in Scale gets built inside the first 90 days and is included.
+        </p>
+        <p class="price-small mt-m">
+          Each price is a local price point set per market, not a conversion of one base rate,
+          which is why they do not line up against any exchange rate. Working in a currency not
+          listed here? Ask, and it gets quoted.
+        </p>
       </div>
     </div>
   </section>
@@ -167,17 +219,44 @@
   <section class="section section--edge">
     <div class="wrap">
       <div class="section-head" data-reveal>
-        <p class="eyebrow">Signals</p>
-        <h2>Worth a call if any of these sound familiar.</h2>
+        <p class="eyebrow">The awkward questions</p>
+        <h2>Answered here rather than on a call.</h2>
       </div>
-      <ul class="tick-list mt-m measure" data-reveal>
-        <li>Enquiries arrive on WhatsApp and get answered hours later, or the next day</li>
-        <li>Nobody can say how many enquiries came in last week, let alone how many went cold</li>
-        <li>The same price question gets answered slightly differently by each member of staff</li>
-        <li>Ad spend climbs and the diary does not</li>
-        <li>Reviews only get asked for when somebody happens to remember</li>
-        <li>Evenings and weekends go unanswered, which is exactly when most people message</li>
-      </ul>
+
+      <div class="prose mt-m" data-reveal>
+        <h3>What happens to ad spend?</h3>
+        <p>
+          It goes to Meta from the clinic’s own account, and the clinic keeps the account.
+          Intelligentside never marks it up and never holds it. Reporting shows spend against
+          booked appointments rather than against clicks.
+        </p>
+
+        <h3>How long is the commitment?</h3>
+        <p>
+          Monthly billing stops with 30 days notice. Yearly billing runs the year. The number,
+          the diary, the social accounts and the website belong to the clinic throughout, and
+          leaving means an export rather than a negotiation.
+        </p>
+
+        <h3>What about more than one location?</h3>
+        <p>
+          Prices sit per location. A second location that shares a phone line and a diary
+          costs less than a standalone one, so it gets quoted rather than listed.
+        </p>
+
+        <h3>Can a tier be split up?</h3>
+        <p>
+          The review process cannot be bought without the booking assistant, because it needs
+          to know who attended. Everything else can be discussed.
+        </p>
+
+        <h3>What happens in month one?</h3>
+        <p>
+          The assistant gets the clinic’s price list, treatments and policies, and runs on a
+          test number until it holds up. Nothing points at the live number until the clinic
+          has heard it answer.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -185,8 +264,8 @@
     <div class="wrap">
       <div class="band" data-reveal>
         <div>
-          <h2>None of these quite fit?</h2>
-          <p>Clinics lose enquiries the same way whatever the treatment. Describe how yours arrive today and get a straight answer on whether this helps.</p>
+          <h2>Not sure which tier?</h2>
+          <p>Describe how enquiries arrive today and how many go unanswered. The answer is usually obvious within ten minutes.</p>
         </div>
         <div class="btn-row">
           <a class="btn btn--primary" href="tel:+447848174335">
@@ -224,9 +303,9 @@
         <h2 id="foot-site">Site</h2>
         <div class="footer-links">
           <a href="../services/">Services</a>
-          <a href="../pricing/">Pricing</a>
+          <a href="./" aria-current="page">Pricing</a>
           <a href="../how-it-works/">How it works</a>
-          <a href="./" aria-current="page">Who it serves</a>
+          <a href="../who-we-serve/">Who it serves</a>
           <a href="../about/">About</a>
           <a href="../contact/">Contact</a>
         </div>
@@ -269,5 +348,6 @@
 <script src="../assets/js/analytics.js" defer></script>
 <script src="../assets/js/site.js" defer></script>
 <script src="../assets/js/field.js" defer></script>
+<script src="../assets/js/pricing.js" defer></script>
 </body>
 </html>

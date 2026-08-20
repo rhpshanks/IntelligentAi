@@ -80,6 +80,33 @@ build if a `tel:` link drifts out of step.
 
 ---
 
+## Pricing
+
+Every price lives in one place: the `MONTHLY` table at the top of
+`assets/js/pricing.js`. Three tiers by six currencies, eighteen numbers. Change
+them there and every tier card follows.
+
+Two rules the page depends on:
+
+1. **Prices are local price points, not conversions.** Each market gets a number
+   chosen for that market, which is why they do not line up against any exchange
+   rate. The page says so in its own copy, and it should keep saying so.
+2. **Yearly is always ten times monthly.** That single rule produces every yearly
+   figure, so nothing needs storing twice. Changing the rule means changing
+   `MONTHS_PER_YEAR_BILLED` and the wording beneath the tiers in the same commit.
+
+The tier names, the included lines and the crossed-out lines all live in the
+markup, so the page reads correctly with scripting switched off. Only the numbers
+and the billing label move.
+
+The visitor's currency gets guessed once from their browser locale, then stored.
+A guess is never a decision: every currency is one click away, and the choice
+persists across visits.
+
+**These figures have not been approved.** See `docs/sop-compliance.md`.
+
+---
+
 ## Analytics
 
 Vercel Web Analytics, counting page views, held behind the consent notice.
@@ -151,9 +178,10 @@ root, which is the intended production setup.
 
 ```
 .
-├── index.html                  Home, with the live diary model
+├── index.html                  Home, the loop and the seven services
+├── services/                   The seven services, plus the diary model
+├── pricing/                    Three tiers, six currencies, switchable
 ├── how-it-works/               Call flow, ring to review, runnable
-├── appointment-booking/        What the assistant handles, diary under load
 ├── who-we-serve/               Four problem shapes, tabbed
 ├── about/                      Position, definitions, what is not claimed
 ├── contact/                    Form, phone, email
@@ -168,6 +196,7 @@ root, which is the intended production setup.
 │   ├── js/field.js             Canvas background
 │   ├── js/scheduler.js         The interactive scheduling engine
 │   ├── js/callflow.js          The call flow simulation
+│   ├── js/pricing.js           Prices, currencies and the switcher
 │   └── img/                    Icons and the social card
 ├── tools/check-site.py         Pre-release checker
 ├── package.json                Records @vercel/analytics. No build step

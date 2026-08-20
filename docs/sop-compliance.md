@@ -17,7 +17,7 @@ reported 0 errors and 0 warnings across 9 pages.
 | 5.2 No customer counts or years in business | Met | None published |
 | 5.2 No uptime, response time or performance benchmarks | Met | The only figures on the site come from the browser-side model, labelled as such on the page and in `terms/` section 3 |
 | 5.2 No certifications, accreditations or awards | Met | None published |
-| 5.2 No pricing or trial claims | Met | None published |
+| 5.2 No pricing or trial claims | **BREACHED, deliberately and on instruction** | The site now publishes three tiers across six currencies. See the note below |
 | 5.2 No competitor comparisons | Met | None published |
 | 5.3 Tone: plain English, short sentences, second person | Met | Throughout |
 | 5.3 First screen answers what, who, what next | Met | Home hero: statement, audience, two calls to action |
@@ -31,6 +31,28 @@ call handling sequence. Its clock is written into the script rather than
 measured, the caller number sits inside the range Ofcom reserves for fiction,
 and the page says both. No timing on that page should be read as a service
 level, and no claim is made that any organisation is live on it.
+
+**Pricing published without approval, open.** SOP section 5.2 lists pricing
+among the claims that must not appear until evidence sits on file and the
+Approver signs off. The pricing page went live on a direct instruction, ahead of
+that sign-off. Everything on it is a placeholder chosen to be plausible rather
+than agreed: the eighteen price points, the ten-months-for-twelve yearly rule,
+the 30 days notice, the post counts, the account counts, and the 90 day window
+for the website in Scale. **None of it has been costed against delivery.**
+
+Two things follow. First, the Approver has to review and set the real numbers
+before launch. Second, until that happens the terms page carries the protection:
+it states plainly that the figures form no offer and no contract, and that the
+price which applies is the one in a written quotation. That is the only reason
+publishing placeholders is survivable rather than reckless.
+
+**Positioning changed again, third time.** The site has now been: workforce
+scheduling, then appointment booking, and now a marketing agency for aesthetics
+clinics selling seven services across three tiers. The booking assistant
+survives as the capture half of the offer, which is why the call flow and the
+diary model both still earn their place. `/appointment-booking/` became
+`/services/`, and `/pricing/` is new. Both old paths 404, which stays safe only
+while the site remains unpublished and unindexed.
 
 **Positioning conflict, closed.** An earlier version of this site described
 workforce scheduling: rotas, travel time between sites, shared kit, bay
@@ -56,7 +78,7 @@ have needed a redirect.
 
 | Clause | Status | Note |
 |---|---|---|
-| Eight phase one pages | Met, with changes | Nine pages now. `/how-it-works/` was added, and `/scheduling-systems/` became `/appointment-booking/`. Neither change is reflected in SOP section 6.1, which **needs amending at the next review**, along with section 5.1, whose approved statements still describe workforce scheduling |
+| Eight phase one pages | Diverged | Ten pages now: `/how-it-works/`, `/services/` and `/pricing/` against the SOP list, which still names `/scheduling-systems`. **SOP sections 5.1, 5.2, 6.1 and 10 all now describe a business the site no longer is, and need rewriting rather than patching** |
 | Maximum two clicks to any page | Met | Every page is in the header or footer, so one click from anywhere |
 | Phone and contact link in header and footer of every page | Met | Header call button plus footer contact column |
 | One primary call to action per page | Met | Each page ends on a single call band |
@@ -192,6 +214,14 @@ it is.
 7. Launch date
 8. Retention period for page view measurement, to confirm from the provider
 9. Whether hosting moves to Vercel, which decides whether measurement works at all
+10. **Every price, and every commercial term on the pricing page.** Eighteen price
+    points, the yearly discount rule, notice period, setup fee treatment, post and
+    account counts, and the 90 day website window. All placeholders
+11. Whether the four currencies beyond GBP and USD match the real target markets.
+    AED, EUR, AUD and CAD were chosen as high spend aesthetics markets, not from data
+12. Whether review requests as described sit inside the platforms' rules in each
+    market. The site deliberately asks every attended client rather than filtering,
+    which is the compliant approach, but the wording deserves a check
 
 Items 1, 2, 4 and 8 block indexing of the two legal pages. The rest do not block
 launch, but each one currently costs sharpness in the copy.

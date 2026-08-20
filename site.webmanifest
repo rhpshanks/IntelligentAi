@@ -1,7 +1,7 @@
 {
   "name": "Intelligentside",
   "short_name": "Intelligentside",
-  "description": "The phone gets answered. The appointment gets booked.",
+  "description": "Enquiries answered. Diaries filled. Reviews earned.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
