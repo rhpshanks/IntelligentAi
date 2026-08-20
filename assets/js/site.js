@@ -327,7 +327,7 @@
       ].join('\n');
     }
 
-    function mailFallback(data) {
+    function mailFallback(data, quiet) {
       var to = CFG.email || 'me@hashaamshahid.com';
       var subject = 'Website enquiry from ' + (data.name || 'a visitor');
       var full = composed(data);
@@ -345,8 +345,10 @@
         '?subject=' + encodeURIComponent(subject) +
         '&body=' + encodeURIComponent(trimmed);
 
-      say('A message addressed to ' + to + ' should now be waiting in your mail app. ' +
-          'Press send there and it arrives. Nothing opened? Copy it below instead.', 'ok');
+      if (!quiet) {
+        say('A message addressed to ' + to + ' should now be waiting in your mail app. ' +
+            'Press send there and it arrives. Nothing opened? Copy it below instead.', 'ok');
+      }
     }
 
     if (copyBtn && panelBody) {
@@ -401,7 +403,15 @@
       }
 
       var data = payload();
-      if (!CFG.formEndpoint) { mailFallback(data); return; }
+
+      /* Background sending needs both an endpoint and a key. Missing either,
+         the mail app route still carries the enquiry, so a half finished
+         setup never costs anybody a message. */
+      if (!CFG.formEndpoint || !CFG.formAccessKey) { mailFallback(data); return; }
+
+      data.access_key = CFG.formAccessKey;
+      data.subject = 'Website enquiry from ' + (data.name || 'a visitor');
+      data.from_name = 'intelligentside.com';
 
       if (submit) submit.disabled = true;
       say('Sending...', 'ok');
@@ -411,13 +421,21 @@
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(data)
       }).then(function (res) {
-        if (!res.ok) throw new Error('status ' + res.status);
+        /* A refusal still returns readable JSON, so the body decides, not the
+           status code alone. */
+        return res.json().catch(function () { return { success: res.ok }; });
+      }).then(function (body) {
+        if (!body || body.success !== true) throw new Error('refused');
         form.reset();
         markReady();
-        say('Thanks, the message landed. It gets read in the order received.', 'ok');
+        if (panel) panel.hidden = true;
+        say('Thanks, that reached us. A reply follows to the address you gave.', 'ok');
       }).catch(function () {
-        say('The message did not send. Please call ' + (CFG.phoneDisplay || '') +
-            ' or write to ' + (CFG.email || '') + ' directly.', 'bad');
+        /* Rather than leaving the visitor holding nothing, fall back to the
+           mail app and the copy panel, quietly, so one clear message stands. */
+        mailFallback(data, true);
+        say('That did not send. The same message should now be in your mail app, ' +
+            'or copy it below. Calling ' + (CFG.phoneDisplay || '') + ' also works.', 'bad');
       }).then(function () {
         if (submit) submit.disabled = false;
       });

@@ -4,12 +4,24 @@
    --------------------------------------------------------------------------- */
 window.IS_CONFIG = {
 
-  /* Contact form delivery.
-     Leave empty and the form composes a pre-filled email in the visitor's mail
-     app instead. Paste a POST endpoint (Formspree, Basin, Web3Forms, or your
-     own handler) to switch to background submission with no mail app step.
-     Remember to add the host to the connect-src list in each page's CSP. */
-  formEndpoint: '',
+  /* Contact form delivery, through Web3Forms.
+
+     Both values below have to be set before background sending switches on.
+     With either one empty the form keeps working through the visitor's own
+     mail app, so the page is never broken while this gets configured.
+
+     To switch it on:
+       1. Go to web3forms.com, enter me@hashaamshahid.com, and they email an
+          access key straight back.
+       2. Paste that key into formAccessKey below.
+       3. Nothing else. The endpoint and the page security policy already
+          allow it.
+
+     The access key belongs in public page code by design: it only permits
+     sending to the address it was issued for, so it cannot be used to mail
+     anybody else. It is not a password and it is not a secret. */
+  formEndpoint: 'https://api.web3forms.com/submit',
+  formAccessKey: '',
 
   /* Where enquiries land. Used by the mail fallback and shown on the site. */
   email: 'me@hashaamshahid.com',

@@ -102,11 +102,41 @@ there. A panel then appears below the form holding the same text and a copy
 button, for anybody whose device has no mail app configured, which is common on
 shared desktops and some Android setups.
 
-**This is not background delivery.** The enquiry only arrives once the visitor
-presses send in their own mail client, and some will not. Silent delivery needs a
-form endpoint: create one with Formspree, Web3Forms or Basin, paste the URL into
-`formEndpoint`, and add that host to `connect-src` in the contact page's CSP.
-The posting code is already written and waiting for the URL.
+### Switching on background sending
+
+A browser cannot send email. Sending happens on a server, and this site has none,
+which is why the mail app step exists at all. Web3Forms supplies the missing
+server side, and everything for it is already wired.
+
+**One step remains, and only you can do it:**
+
+1. Go to web3forms.com and enter `me@hashaamshahid.com`. They email an access key
+   straight back.
+2. Paste that key into `formAccessKey` in `assets/js/config.js`.
+
+Nothing else changes. The endpoint is already set, and
+`https://api.web3forms.com` already sits in `connect-src` on the contact page.
+
+The access key is meant to live in public page code. It only permits sending to
+the address it was issued for, so nobody can use it to mail anybody else. It is
+not a password. Do not treat a key from a different service the same way: an API
+key for something like Resend or SendGrid **is** secret, must never appear in the
+page, and needs a server side function instead.
+
+Once the key is in, pressing the button sends in the background and the visitor
+sees a confirmation. No mail app, no second step.
+
+**Behaviour while the key is missing:** the form falls back to the mail app route
+above, so the page is never broken mid setup.
+
+**Behaviour when a send fails:** the visitor is not left holding nothing. The mail
+app opens with the same message, the copy panel appears, and the status line says
+what happened and offers the phone number. Verified against a deliberately
+invalid key: the request goes out, the rejection comes back, and the fallback
+engages.
+
+Check the current message allowance on their pricing page before relying on the
+no-cost tier for real volume.
 
 ---
 
