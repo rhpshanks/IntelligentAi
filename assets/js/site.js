@@ -254,10 +254,46 @@
       return false;
     }
 
-    $$('input, textarea', form).forEach(function (input) {
+    var hint = $('[data-send-hint]', form);
+    var wasReady = null;
+
+    /* Readiness gets judged quietly. The rules run on every keystroke to decide
+       whether the button should light up, but error messages still wait until
+       the visitor has tried to send or left a field. Nobody gets scolded for a
+       half typed email address.
+
+       The button never gets disabled. A disabled control gives no reason for
+       being disabled, and a visitor cannot ask it why. Highlighting the ready
+       state adds a signal without taking the choice away. */
+    function ready() {
+      return Object.keys(RULES).every(function (key) {
+        var input = form.elements[key];
+        return input && RULES[key](input.value) === true;
+      });
+    }
+
+    function markReady() {
+      var on = ready();
+      if (on === wasReady) return;
+      wasReady = on;
+
+      if (submit) submit.setAttribute('data-ready', on ? 'true' : 'false');
+      if (hint) {
+        hint.setAttribute('data-ready', on ? 'true' : 'false');
+        hint.textContent = on ? 'Ready to send' : '';
+      }
+    }
+
+    $$('input, textarea, select', form).forEach(function (input) {
       input.addEventListener('blur', function () { if (checked) validateField(input); });
-      input.addEventListener('input', function () { if (checked) validateField(input); });
+      input.addEventListener('input', function () {
+        if (checked) validateField(input);
+        markReady();
+      });
+      input.addEventListener('change', markReady);
     });
+
+    markReady();
 
     function say(message, tone) {
       if (!status) return;
@@ -275,10 +311,12 @@
       return data;
     }
 
-    function mailFallback(data) {
-      var to = CFG.email || 'me@hashaamshahid.com';
-      var subject = 'Website enquiry from ' + (data.name || 'a visitor');
-      var lines = [
+    var panel = $('[data-mail-fallback]', form);
+    var panelBody = $('[data-mail-body]', form);
+    var copyBtn = $('[data-mail-copy]', form);
+
+    function composed(data) {
+      return [
         'Name: ' + (data.name || ''),
         'Email: ' + (data.email || ''),
         'Company: ' + (data.company || 'not given'),
@@ -286,14 +324,54 @@
         'Topic: ' + (data.topic || 'not given'),
         '',
         data.message || ''
-      ];
+      ].join('\n');
+    }
+
+    function mailFallback(data) {
+      var to = CFG.email || 'me@hashaamshahid.com';
+      var subject = 'Website enquiry from ' + (data.name || 'a visitor');
+      var full = composed(data);
+
+      /* Mail clients truncate a long mailto and a few refuse it outright, so the
+         link carries a trimmed body while the panel below keeps every word. */
+      var trimmed = full.length > 1400 ? full.slice(0, 1400) + '\n\n[continues below]' : full;
+
+      if (panel && panelBody) {
+        panelBody.value = full;
+        panel.hidden = false;
+      }
 
       window.location.href = 'mailto:' + to +
         '?subject=' + encodeURIComponent(subject) +
-        '&body=' + encodeURIComponent(lines.join('\n'));
+        '&body=' + encodeURIComponent(trimmed);
 
-      say('Your mail app should now hold a pre-filled message. Press send there and it ' +
-          'reaches ' + to + '. No mail app on this device? Copy the address and write directly.', 'ok');
+      say('A message addressed to ' + to + ' should now be waiting in your mail app. ' +
+          'Press send there and it arrives. Nothing opened? Copy it below instead.', 'ok');
+    }
+
+    if (copyBtn && panelBody) {
+      copyBtn.addEventListener('click', function () {
+        var label = copyBtn.textContent;
+
+        function done() {
+          copyBtn.textContent = 'Copied';
+          copyBtn.setAttribute('data-done', 'true');
+          window.setTimeout(function () {
+            copyBtn.textContent = label;
+            copyBtn.removeAttribute('data-done');
+          }, 1800);
+        }
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(panelBody.value).then(done, function () {
+            panelBody.select();
+          });
+          return;
+        }
+
+        panelBody.select();
+        try { document.execCommand('copy'); done(); } catch (e) { /* the selection stands */ }
+      });
     }
 
     form.addEventListener('submit', function (e) {
@@ -318,6 +396,7 @@
       if ((trap && trap.value) || (Date.now() - loadedAt) < 1200) {
         say('Thanks. The message went through.', 'ok');
         form.reset();
+        markReady();
         return;
       }
 
@@ -334,6 +413,7 @@
       }).then(function (res) {
         if (!res.ok) throw new Error('status ' + res.status);
         form.reset();
+        markReady();
         say('Thanks, the message landed. It gets read in the order received.', 'ok');
       }).catch(function () {
         say('The message did not send. Please call ' + (CFG.phoneDisplay || '') +

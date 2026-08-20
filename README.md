@@ -80,6 +80,36 @@ build if a `tel:` link drifts out of step.
 
 ---
 
+## The contact form
+
+Two behaviours worth knowing about before changing anything.
+
+**The send button highlights when the form is complete.** Every keystroke runs
+the same rules the submit uses, and once name, email and message all pass, the
+button gains a glow ring and a "Ready to send" marker appears beside it. Break a
+field and both go away again.
+
+The button is **never disabled**, and it should stay that way. A disabled control
+cannot explain why it is disabled, and a visitor cannot ask it. Highlighting the
+ready state adds a signal without removing the ability to press and find out.
+Error messages still wait until a first send attempt or a field blur, so nobody
+gets corrected while halfway through typing an address.
+
+**Where a submitted form goes.** With `formEndpoint` empty in `config.js`, the
+form opens a message in the visitor's own mail app, addressed to the address in
+`config.js`, with every field laid out in the body. The visitor presses send
+there. A panel then appears below the form holding the same text and a copy
+button, for anybody whose device has no mail app configured, which is common on
+shared desktops and some Android setups.
+
+**This is not background delivery.** The enquiry only arrives once the visitor
+presses send in their own mail client, and some will not. Silent delivery needs a
+form endpoint: create one with Formspree, Web3Forms or Basin, paste the URL into
+`formEndpoint`, and add that host to `connect-src` in the contact page's CSP.
+The posting code is already written and waiting for the URL.
+
+---
+
 ## Pricing
 
 Every price lives in one place: the `MONTHLY` table at the top of

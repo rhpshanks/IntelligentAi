@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://intelligentside.com/assets/img/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Intelligentside: enquiries answered, diaries filled.">
+<meta property="og:image:alt" content="Intelligentside: we answer your clinic's phone.">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="../assets/img/favicon.ico" sizes="32x32">
@@ -150,13 +150,24 @@
             </div>
 
             <div class="btn-row">
-              <button class="btn btn--primary" type="submit">
+              <button class="btn btn--primary" type="submit" data-ready="false">
                 Send message
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
               </button>
+              <span class="send-hint" data-send-hint data-ready="false" role="status" aria-live="polite"></span>
             </div>
 
             <p class="form-status" data-form-status role="status" aria-live="polite" hidden></p>
+
+            <div class="mail-fallback" data-mail-fallback hidden>
+              <p>
+                No mail app opened? Copy the message below and send it to
+                <a href="mailto:me@hashaamshahid.com">me@hashaamshahid.com</a> yourself.
+              </p>
+              <label class="visually-hidden" for="f-copy">Message text to copy</label>
+              <textarea id="f-copy" data-mail-body readonly></textarea>
+              <button class="copy-btn" type="button" data-mail-copy>Copy message</button>
+            </div>
 
             <p class="hint">
               What happens to a message sent here is written in the
@@ -219,8 +230,8 @@
           <span class="brand-name"><b>Intelligent</b><span>side</span></span>
         </a>
         <p class="footer-blurb">
-          Marketing for aesthetics clinics: enquiries answered by AI, diaries
-          filled, and reviews earned from the clients who came in.
+          Marketing for aesthetics clinics. We answer the messages, book the
+          appointments, and run the social and ads that bring them in.
         </p>
       </div>
 

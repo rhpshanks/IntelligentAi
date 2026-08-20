@@ -1589,3 +1589,89 @@ input[type="range"]:hover::-webkit-slider-thumb { transform: scale(1.15); }
 }
 .svc h3 { font-size: 1.02rem; }
 .svc p { font-size: .92rem; color: var(--muted); }
+
+/* --- 24. Very small phones ----------------------------------------------
+   At 320px the brand, the call button and the two icon buttons together
+   exceeded the viewport. Everything below buys back roughly 40px so the
+   header still holds the call to action on the smallest screens in use.
+   ------------------------------------------------------------------------ */
+
+@media (max-width: 400px) {
+  .masthead { gap: .5rem; min-height: 4.1rem; }
+  .brand { gap: .45rem; padding: .25rem; }
+  .brand-mark { width: 26px; height: 26px; }
+  .brand-name { font-size: .95rem; }
+  .header-tools { gap: .35rem; }
+  .icon-btn { width: 2.15rem; height: 2.15rem; }
+  .icon-btn svg { width: 15px; height: 15px; }
+  .header-call { padding: .5rem .62rem; }
+  .nav { inset-block-start: 4.1rem; }
+}
+
+/* --- 25. Form send state -------------------------------------------------
+   The submit button never gets disabled. A disabled control cannot explain
+   itself, so the ready state is added as a signal rather than the unready
+   state being taken away.
+   ------------------------------------------------------------------------ */
+
+.form [type="submit"] {
+  transition: box-shadow 240ms var(--ease), transform 160ms var(--ease),
+              background 160ms var(--ease);
+}
+.form [type="submit"][data-ready="true"] {
+  box-shadow: 0 0 0 3px rgb(var(--glow) / .3), 0 14px 34px -12px rgb(var(--glow) / .75);
+  animation: readyPop 440ms var(--ease);
+}
+
+@keyframes readyPop {
+  0%   { transform: scale(1); }
+  45%  { transform: scale(1.045); }
+  100% { transform: scale(1); }
+}
+
+.send-hint {
+  font-family: var(--mono);
+  font-size: .7rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  opacity: 0;
+  transition: opacity 240ms var(--ease);
+}
+.send-hint[data-ready="true"] { opacity: 1; }
+.send-hint[data-ready="true"]::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 0 rgb(var(--glow) / .6);
+  animation: pulse 2.6s infinite;
+}
+
+.mail-fallback {
+  display: grid;
+  gap: .7rem;
+  padding: 1rem 1.05rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--line));
+  border-radius: var(--r-md);
+  background: var(--surface-2);
+}
+.mail-fallback[hidden] { display: none; }
+.mail-fallback p { font-size: .9rem; color: var(--muted); margin: 0; }
+.mail-fallback textarea {
+  width: 100%;
+  min-height: 7.5rem;
+  padding: .7rem .8rem;
+  font-family: var(--mono);
+  font-size: .78rem;
+  line-height: 1.55;
+  color: var(--text);
+  background: color-mix(in srgb, var(--bg) 60%, transparent);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  resize: vertical;
+}
