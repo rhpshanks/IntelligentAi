@@ -80,63 +80,41 @@ build if a `tel:` link drifts out of step.
 
 ---
 
-## The contact form
+## How people make contact
 
-Two behaviours worth knowing about before changing anything.
+There is no form. Every phone control on the site opens WhatsApp with a message
+already written, so the visitor sends rather than composes.
 
-**The send button highlights when the form is complete.** Every keystroke runs
-the same rules the submit uses, and once name, email and message all pass, the
-button gains a glow ring and a "Ready to send" marker appears beside it. Break a
-field and both go away again.
+| Control | Message it opens with |
+|---|---|
+| Header button, every page | I'd like to talk about getting my clinic's enquiries answered |
+| Home, who it serves | the same general opener |
+| Services page band | I'd like to talk about what you could run for my clinic |
+| Pricing page band | I'm not sure which tier fits my clinic |
+| Each pricing tier button | I'm interested in the [tier] tier for my clinic |
+| How it works band | I'd like to talk about the booking assistant for my clinic |
+| About band | I have a question about how you work |
 
-The button is **never disabled**, and it should stay that way. A disabled control
-cannot explain why it is disabled, and a visitor cannot ask it. Highlighting the
-ready state adds a signal without removing the ability to press and find out.
-Error messages still wait until a first send attempt or a field blur, so nobody
-gets corrected while halfway through typing an address.
+The message tells you which page somebody came from, which is worth more than
+it looks: an enquiry that opens with the Scale tier named is a different
+conversation from one that opens with the general line.
 
-**Where a submitted form goes.** With `formEndpoint` empty in `config.js`, the
-form opens a message in the visitor's own mail app, addressed to the address in
-`config.js`, with every field laid out in the body. The visitor presses send
-there. A panel then appears below the form holding the same text and a copy
-button, for anybody whose device has no mail app configured, which is common on
-shared desktops and some Android setups.
+Three rules the links follow:
 
-### Switching on background sending
+1. **The control looks like what it does.** A number that opens WhatsApp while
+   looking like a dial link is a nasty surprise. The number stays visible for
+   trust, with the WhatsApp mark beside it, so the action reads honestly.
+2. **Calling stays possible.** The footer keeps a real `tel:` link, and the
+   contact page has a "Rather speak?" tile. Removing every route to an actual
+   call from a company selling phone answering would be an odd look.
+3. **The number lives in the markup, not in script.** The links work with
+   scripting off and search engines can read them. The cost is that the number
+   sits in eleven pages, so `check-site.py` fails the build if any of them
+   drifts or loses its prefilled message.
 
-A browser cannot send email. Sending happens on a server, and this site has none,
-which is why the mail app step exists at all. Web3Forms supplies the missing
-server side, and everything for it is already wired.
-
-**One step remains, and only you can do it:**
-
-1. Go to web3forms.com and enter `me@hashaamshahid.com`. They email an access key
-   straight back.
-2. Paste that key into `formAccessKey` in `assets/js/config.js`.
-
-Nothing else changes. The endpoint is already set, and
-`https://api.web3forms.com` already sits in `connect-src` on the contact page.
-
-The access key is meant to live in public page code. It only permits sending to
-the address it was issued for, so nobody can use it to mail anybody else. It is
-not a password. Do not treat a key from a different service the same way: an API
-key for something like Resend or SendGrid **is** secret, must never appear in the
-page, and needs a server side function instead.
-
-Once the key is in, pressing the button sends in the background and the visitor
-sees a confirmation. No mail app, no second step.
-
-**Behaviour while the key is missing:** the form falls back to the mail app route
-above, so the page is never broken mid setup.
-
-**Behaviour when a send fails:** the visitor is not left holding nothing. The mail
-app opens with the same message, the copy panel appears, and the status line says
-what happened and offers the phone number. Verified against a deliberately
-invalid key: the request goes out, the rejection comes back, and the fallback
-engages.
-
-Check the current message allowance on their pricing page before relying on the
-no-cost tier for real volume.
+**The form is gone but not deleted.** `site.js` still holds the handler, guarded
+so it exits immediately when no form is present. The Web3Forms endpoint and key
+stay in `config.js`, marked dormant. Putting a form back needs the markup only.
 
 ---
 

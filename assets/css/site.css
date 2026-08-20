@@ -1675,3 +1675,28 @@ input[type="range"]:hover::-webkit-slider-thumb { transform: scale(1.15); }
   border-radius: var(--r-sm);
   resize: vertical;
 }
+
+/* --- 26. WhatsApp routes -------------------------------------------------
+   Every phone control now opens WhatsApp with a message already written. The
+   number stays visible because it earns trust and can be dialled by hand, but
+   the WhatsApp mark sits beside it so the control looks like what it does.
+   ------------------------------------------------------------------------ */
+
+.wa-glyph { width: 16px; height: 16px; flex: none; }
+.header-call .wa-glyph { width: 15px; height: 15px; }
+.tier-foot .wa-glyph { margin-right: .1rem; }
+
+/* Used outside a form field, where the scoped rule does not reach. */
+.hint {
+  font-size: var(--step--1);
+  color: var(--muted);
+}
+
+/* The WhatsApp call to action carries a longer label than the old phone one,
+   and .btn sets nowrap for good reasons elsewhere. These opt back in to
+   wrapping so a narrow phone gets two tidy lines instead of an overflow.
+   The header button keeps nowrap: its label is hidden at that size anyway. */
+.btn-row .btn[href*="wa.me"] {
+  white-space: normal;
+  text-align: center;
+}

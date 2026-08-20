@@ -4,7 +4,23 @@
    --------------------------------------------------------------------------- */
 window.IS_CONFIG = {
 
-  /* Contact form delivery, through Web3Forms.
+  /* WhatsApp is the way in. Every phone control on the site opens a chat with
+     a message already written, so nobody has to compose anything.
+
+     The links sit in the page markup rather than being built here, so they
+     work without scripting and search engines can see them. That means the
+     number lives in eleven pages at once, which is why check-site.py fails the
+     build the moment one of them drifts. Change the number by search and
+     replace across the HTML, then run the checker.
+
+     Number in link form: 447848174335, with no plus, spaces or dashes.
+
+     ---
+
+     Contact form delivery, through Web3Forms. DORMANT: the contact page no
+     longer carries a form, so nothing below runs today. It stays because the
+     handler in site.js is guarded and costs nothing, and putting a form back
+     needs only the markup returning. */
 
      Both values below have to be set before background sending switches on.
      With either one empty the form keeps working through the visitor's own

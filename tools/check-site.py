@@ -217,6 +217,14 @@ def check(path):
         if bad != "+447848174335":
             err(rel, f"phone link uses {bad}, expected +447848174335")
 
+    # --- WhatsApp links ---
+    for link in re.findall(r'href="(https://wa\.me/[^"]*)"', raw):
+        number = link.split("wa.me/")[1].split("?")[0]
+        if number != "447848174335":
+            err(rel, f"WhatsApp link uses {number}, expected 447848174335")
+        if "?text=" not in link:
+            warn(rel, "WhatsApp link carries no prefilled message")
+
     return rel
 
 
